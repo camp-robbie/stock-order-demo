@@ -32,4 +32,14 @@ class OrderServiceTest {
         assertThat(productRepository.findById(product.getId()).get().getStock()).isEqualTo(7);
         assertThat(orderRepository.count()).isEqualTo(1);
     }
+
+    @Test
+    void 재고와_주문수량이_같으면_주문에_성공한다() {
+        Product product = productRepository.save(new Product("키보드", 10));
+
+        orderService.order(product.getId(), 10);
+
+        assertThat(productRepository.findById(product.getId()).get().getStock()).isZero();
+        assertThat(orderRepository.count()).isEqualTo(1);
+    }
 }
