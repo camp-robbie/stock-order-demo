@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./gradlew test --tests '*OrderServiceTest' -q || { echo 'OrderServiceTest 실패' >&2; exit 2; }"
+          }
+        ]
+      }
+    ]
+  }
+}

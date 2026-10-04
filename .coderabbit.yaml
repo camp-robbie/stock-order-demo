@@ -1,0 +1,12 @@
+language: ko-KR
+
+reviews:
+  path_instructions:
+    - path: "src/main/java/**"
+      instructions: |
+        - docs/requirements.md의 번호 붙은 문장과 어긋나는 조건과 응답 코드를 우선 검토한다.
+        - 지적할 때는 관련 요구사항 번호를 함께 적는다.
+        - 포맷팅과 import 순서는 지적하지 않는다.
+    - path: "src/test/java/**"
+      instructions: |
+        - 요구사항 3·6번의 성공·실패 경로가 모두 테스트되는지 확인한다.
