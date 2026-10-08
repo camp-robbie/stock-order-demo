@@ -33,4 +33,15 @@ class OrderControllerTest {
                         .content("{\"productId\":" + product.getId() + ",\"quantity\":0}"))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    @DisplayName("요구사항 6 - 재고가 부족하면 409를 반환한다")
+    void 재고가_부족하면_409를_반환한다() throws Exception {
+        Product product = productRepository.save(new Product("키보드", 9));
+
+        mockMvc.perform(post("/orders")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"productId\":" + product.getId() + ",\"quantity\":10}"))
+                .andExpect(status().isConflict());
+    }
 }

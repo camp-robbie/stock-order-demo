@@ -15,8 +15,8 @@ public class OrderService {
     public Long order(Long productId, int quantity) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException(productId));
-        if (product.getStock() <= quantity) {
-            throw new InsufficientStockException(productId, quantity);
+        if (product.getStock() < quantity) {
+            throw new InsufficientStockException(product.getId(), quantity);
         }
         product.decreaseStock(quantity);
         return orderRepository.save(Order.of(product, quantity)).getId();
