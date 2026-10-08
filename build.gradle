@@ -47,8 +47,8 @@ jacocoTestReport {
 
 sonar {
     properties {
-        property 'sonar.projectKey', '<your-org>_stock-order-demo'
-        property 'sonar.organization', '<your-org>'
+        property 'sonar.projectKey', 'camp-robbie_stock-order-demo'
+        property 'sonar.organization', 'camp-robbie'
         property 'sonar.host.url', 'https://sonarcloud.io'
     }
 }
